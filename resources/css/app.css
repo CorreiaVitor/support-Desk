@@ -1,6 +1,10 @@
-@import 'tailwindcss';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+@media (min-width: 768px) {
+    .sidebar-area {
+        min-height: 100vh;
+    }
+}
 
 :root {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',

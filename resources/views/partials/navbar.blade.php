@@ -1,33 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="/dashboard">SupportDesk</a>
+        <a class="navbar-brand fw-bold mb-0" href="/dashboard">
+            SupportDesk
+        </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportDesk">
+        <div class="d-none d-md-flex align-items-center gap-3 ms-auto">
+            <span class="text-white-50 small">
+                Usuário fictício: João Administrador
+            </span>
+
+            <span class="badge text-bg-primary">
+                Administrador
+            </span>
+
+            <a href="#" class="btn btn-danger btn-sm">
+                Sair
+            </a>
+        </div>
+
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu" aria-expanded="false" aria-label="Abrir menu lateral">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportDesk">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/tickets">Chamados</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/users">Usuários</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/categories">Categorias</a>
-                </li>
-            </ul>
-
-            <span class="navbar-text text-white">
-                Administrador: João Silva
-            </span>
-        </div>
     </div>
 </nav>
