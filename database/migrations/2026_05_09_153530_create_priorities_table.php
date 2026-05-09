@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->isNotEmpty();
             $table->text('description')->nullable();
-            $table->string('level');
+            $table->unsignedTinyInteger('level');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
