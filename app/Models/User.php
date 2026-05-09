@@ -31,24 +31,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function requestedTickets(): HasMany
-    {
-        return $this->hasMany(Ticket::class, 'requester_id');
-    }
-
-    public function assignedTickets(): HasMany
-    {
-        return $this->hasMany(Ticket::class, 'assigned_to_id');
-    }
-
-    public function ticketComments(): HasMany
-    {
-        return $this->hasMany(TicketComment::class);
-    }
 }
