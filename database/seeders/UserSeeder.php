@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         collect([
             [
                 'name' => 'Vitor Correia',
-                'email' => 'joao.admin@supportdesk.test',
+                'email' => 'Vitor.admin@supportdesk.test',
                 'password' => Hash::make('password'),
                 'profile_id' => $administratorProfile->id,
                 'department' => 'TI',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'João Neves',
-                'email' => 'carlos.tecnico@supportdesk.test',
+                'email' => 'João.tecnico@supportdesk.test',
                 'password' => Hash::make('password'),
                 'profile_id' => $technicianProfile->id,
                 'department' => 'Suporte',
