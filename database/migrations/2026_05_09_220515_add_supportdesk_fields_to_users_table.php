@@ -16,7 +16,7 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('restrict');
                 
-            $table->string('departament')->nullable();
+            $table->string('department')->nullable();
             $table->boolean('is_active')->default(true);
         });
     }
