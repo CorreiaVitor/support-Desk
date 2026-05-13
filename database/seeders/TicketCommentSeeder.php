@@ -23,13 +23,13 @@ class TicketCommentSeeder extends Seeder
             ],
             [
                 'ticket_number' => 1001,
-                'user_email' => 'carlos.tecnico@supportdesk.test',
+                'user_email' => 'João.tecnico@supportdesk.test',
                 'body' => 'Verificar fonte de alimentação e cabo de energia. Possível problema físico no equipamento.',
                 'is_internal' => true,
             ],
             [
                 'ticket_number' => 1001,
-                'user_email' => 'carlos.tecnico@supportdesk.test',
+                'user_email' => 'João.tecnico@supportdesk.test',
                 'body' => 'Chamado recebido. Estou indo até o setor financeiro para verificar o equipamento.',
                 'is_internal' => false,
             ],
