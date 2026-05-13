@@ -21,7 +21,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->onDelete('restrict');
 
-            $table->foreignId('technican_id')
+            $table->foreignId('technician_id')
                 ->nullable()
                 ->constrained('users')
                 ->onDelete('restrict');
