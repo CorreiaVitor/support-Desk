@@ -33,8 +33,8 @@ class TicketSeeder extends Seeder
         $waitingUserStatus = TicketStatus::where('name', 'Aguardando usuário')->firstOrFail();
         $resolvedStatus = TicketStatus::where('name', 'Resolvido')->firstOrFail();
 
-        $joaoAdmin = User::where('email', 'joao.admin@supportdesk.test')->firstOrFail();
-        $carlosTechnician = User::where('email', 'carlos.tecnico@supportdesk.test')->firstOrFail();
+        $vitorAdmin = User::where('email', 'Vitor.admin@supportdesk.test')->firstOrFail();
+        $joaoTechnician = User::where('email', 'João.tecnico@supportdesk.test')->firstOrFail();
         $anaSupport = User::where('email', 'ana.suporte@supportdesk.test')->firstOrFail();
         $mariaUser = User::where('email', 'maria.oliveira@supportdesk.test')->firstOrFail();
         $pedroUser = User::where('email', 'pedro.santos@supportdesk.test')->firstOrFail();
@@ -46,7 +46,7 @@ class TicketSeeder extends Seeder
                 'title' => 'Computador não liga',
                 'description' => 'O computador do setor financeiro não liga desde o início do expediente. Ao pressionar o botão de energia, nenhuma luz acende e o equipamento não emite som.',
                 'requester_id' => $mariaUser->id,
-                'technician_id' => $carlosTechnician->id,
+                'technician_id' => $joaoTechnician->id,
                 'category_id' => $hardwareCategory->id,
                 'priority_id' => $highPriority->id,
                 'ticket_status_id' => $openStatus->id,
@@ -66,7 +66,7 @@ class TicketSeeder extends Seeder
                 'title' => 'Solicitação de novo mouse',
                 'description' => 'O mouse atual apresenta falhas no clique esquerdo e dificulta o uso diário do computador.',
                 'requester_id' => $pedroUser->id,
-                'technician_id' => $carlosTechnician->id,
+                'technician_id' => $joaoTechnician->id,
                 'category_id' => $hardwareCategory->id,
                 'priority_id' => $lowPriority->id,
                 'ticket_status_id' => $resolvedStatus->id,
@@ -96,7 +96,7 @@ class TicketSeeder extends Seeder
                 'title' => 'Atualização de software solicitada',
                 'description' => 'Solicitação de atualização do software de planilhas para compatibilidade com arquivos recebidos de fornecedores.',
                 'requester_id' => $pedroUser->id,
-                'technician_id' => $carlosTechnician->id,
+                'technician_id' => $joaoTechnician->id,
                 'category_id' => $softwareCategory->id,
                 'priority_id' => $mediumPriority->id,
                 'ticket_status_id' => $waitingUserStatus->id,
@@ -105,7 +105,7 @@ class TicketSeeder extends Seeder
                 'number' => 1007,
                 'title' => 'Solicitação de criação de usuário',
                 'description' => 'Solicitação de criação de usuário para novo colaborador do setor financeiro nos sistemas internos da empresa.',
-                'requester_id' => $joaoAdmin->id,
+                'requester_id' => $vitorAdmin->id,
                 'technician_id' => $anaSupport->id,
                 'category_id' => $accessCategory->id,
                 'priority_id' => $lowPriority->id,
