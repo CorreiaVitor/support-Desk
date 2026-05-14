@@ -1,115 +1,125 @@
-<nav class="p-3" aria-label="Menu lateral">
+<div class="p-3">
+    <div class="mb-4">
+        <h6 class="text-uppercase text-muted fw-bold small mb-3">
+            Principal
+        </h6>
 
-    <div class="d-md-none border-bottom pb-3 mb-3">
-        <p class="text-muted small mb-2">
-            Usuário fictício: João Administrador
-        </p>
+        <div class="d-md-none border-bottom pb-3 mb-3">
+            <p class="text-muted small mb-2">
+                Usuário fictício: João Administrador
+            </p>
 
-        <div class="d-flex align-items-center gap-2">
-            <span class="badge text-bg-primary">
-                Administrador
-            </span>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge text-bg-primary">
+                    Administrador
+                </span>
 
-            <a href="#" class="btn btn-outline-dark btn-sm">
-                Sair
-            </a>
+                <a href="#" class="btn btn-outline-dark btn-sm">
+                    Sair
+                </a>
+            </div>
+
+            <ul class="nav nav-pills flex-column gap-1">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.index') }}"
+                        class="nav-link {{ request()->routeIs('dashboard.index') ? 'active' : 'text-dark' }}">
+                        Dashboard
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h6 class="text-uppercase text-muted fw-bold small mb-3">
+                Chamados
+            </h6>
+
+            <ul class="nav nav-pills flex-column gap-1">
+                <li class="nav-item">
+                    <a href="{{ route('tickets.index') }}"
+                        class="nav-link {{ request()->routeIs('tickets.index') ? 'active' : 'text-dark' }}">
+                        Todos os chamados
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('tickets.create') }}"
+                        class="nav-link {{ request()->routeIs('tickets.create') ? 'active' : 'text-dark' }}">
+                        Novo chamado
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('user.tickets.index') }}"
+                        class="nav-link {{ request()->routeIs('user.tickets.index') ? 'active' : 'text-dark' }}">
+                        Meus chamados
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
+            <h6 class="text-uppercase text-muted fw-bold small mb-3">
+                Administração
+            </h6>
+
+            <ul class="nav nav-pills flex-column gap-1">
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : 'text-dark' }}">
+                        Usuários
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.profiles.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.profiles.*') ? 'active' : 'text-dark' }}">
+                        Perfis de acesso
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.categories.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : 'text-dark' }}">
+                        Categorias
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.priorities.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.priorities.*') ? 'active' : 'text-dark' }}">
+                        Prioridades
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.statuses.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.statuses.*') ? 'active' : 'text-dark' }}">
+                        Status
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h6 class="text-uppercase text-muted fw-bold small mb-3">
+                Equipe
+            </h6>
+
+            <ul class="nav nav-pills flex-column gap-1">
+                <li class="nav-item">
+                    <a href="{{ route('technician.tickets.index') }}"
+                        class="nav-link {{ request()->routeIs('technician.tickets.*') ? 'active' : 'text-dark' }}">
+                        Chamados atribuídos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('supervisor.dashboard') }}"
+                        class="nav-link {{ request()->routeIs('supervisor.dashboard') ? 'active' : 'text-dark' }}">
+                        Painel do supervisor
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <ul class="nav nav-pills flex-column mb-4">
-        <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-                Dashboard
-            </a>
-        </li>
-    </ul>
-
-    <button class="btn w-100 text-start text-uppercase text-muted fw-bold small mb-3 p-0 border-0 bg-transparent"
-        type="button" data-bs-toggle="collapse" data-bs-target="#menuChamados" aria-expanded="true"
-        aria-controls="menuChamados">
-        Chamados
-    </button>
-
-    <div class="collapse show" id="menuChamados">
-        <ul class="nav nav-pills flex-column mb-4">
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Todos os chamados
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Novo chamado
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Meus chamados
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <button class="btn w-100 text-start text-uppercase text-muted fw-bold small mb-3 p-0 border-0 bg-transparent"
-        type="button" data-bs-toggle="collapse" data-bs-target="#menuAdministracao" aria-expanded="true"
-        aria-controls="menuAdministracao">
-        Administração
-    </button>
-
-    <div class="collapse show" id="menuAdministracao">
-        <ul class="nav nav-pills flex-column mb-4">
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Usuários
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Perfis de acesso
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Categorias
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Prioridades
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Status
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <button class="btn w-100 text-start text-uppercase text-muted fw-bold small mb-3 p-0 border-0 bg-transparent"
-        type="button" data-bs-toggle="collapse" data-bs-target="#menuEquipe" aria-expanded="true"
-        aria-controls="menuEquipe">
-        Equipe
-    </button>
-
-    <div class="collapse show" id="menuEquipe">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Chamados atribuídos
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark">
-                    Painel do supervisor
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
