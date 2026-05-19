@@ -1,10 +1,21 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'dashboard.index')->name('dashboard.index');
 
-Route::view('/tickets', 'tickets.index')->name('tickets.index');
+Route::resourceVerbs([
+    'create' => 'criar',
+    'edit' => 'editar'
+]);
+
+Route::resource('/chamados', TicketController::class)
+->only('index')
+->names('tickets')
+->parameters(['chamados' => 'tickets']);
+
+// Route::view('/tickets', 'tickets.index')->name('tickets.index')
 Route::view('/tickets/create', 'tickets.create')->name('tickets.create');
 Route::view('/tickets/1001', 'tickets.show')->name('tickets.show');
 
