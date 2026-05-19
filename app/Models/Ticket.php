@@ -49,7 +49,7 @@ class Ticket extends Model
 
     public function ticketStatus(): BelongsTo
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo(TicketStatus::class);
     }
 
     public function comments(): HasMany
