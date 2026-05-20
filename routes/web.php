@@ -8,16 +8,17 @@ Route::view('/', 'dashboard.index')->name('dashboard.index');
 Route::resourceVerbs([
     'create' => 'criar',
     'edit' => 'editar'
+
 ]);
 
 Route::resource('/chamados', TicketController::class)
-->only('index')
+->only(['index'])
 ->names('tickets')
-->parameters(['chamados' => 'tickets']);
+->parameters(['chamados' => 'ticket']);
 
-// Route::view('/tickets', 'tickets.index')->name('tickets.index')
+Route::get('/chamados/{ticket:number}', [TicketController::class, 'show'])->name('tickets.show');
+
 Route::view('/tickets/create', 'tickets.create')->name('tickets.create');
-Route::view('/tickets/1001', 'tickets.show')->name('tickets.show');
 
 Route::view('/admin/users', 'admin.users.index')->name('admin.users.index');
 Route::view('/admin/users/create', 'admin.users.create')->name('admin.users.create');
