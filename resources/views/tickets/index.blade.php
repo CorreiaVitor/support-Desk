@@ -114,7 +114,7 @@
                                 </td>
                                 <td>{{ $ticket->technician->name ?? 'Não atribuído' }}</td>
                                 <td class="text-end">
-                                    <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('tickets.show', $ticket->number) }}" class="btn btn-outline-primary btn-sm">
                                         Ver
                                     </a>
                                 </td>
