@@ -12,13 +12,11 @@ Route::resourceVerbs([
 ]);
 
 Route::resource('/chamados', TicketController::class)
-->only(['index'])
+->only(['index', 'create', 'store'])
 ->names('tickets')
 ->parameters(['chamados' => 'ticket']);
 
 Route::get('/chamados/{ticket:number}', [TicketController::class, 'show'])->name('tickets.show');
-
-Route::view('/tickets/create', 'tickets.create')->name('tickets.create');
 
 Route::view('/admin/users', 'admin.users.index')->name('admin.users.index');
 Route::view('/admin/users/create', 'admin.users.create')->name('admin.users.create');
