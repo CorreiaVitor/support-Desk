@@ -20,6 +20,7 @@
                 </aside>
 
                 <main class="col-12 col-md-9 col-lg-10 p-4">
+                    @include('partials.alert')
                     @yield('content')
                 </main>
             </div>
