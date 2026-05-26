@@ -36,7 +36,6 @@ return new class extends Migration
                 ->onDelete('restrict');
 
             $table->foreignId('ticket_status_id')
-                ->default(TicketStatus::Aberto->value)
                 ->constrained()
                 ->onDelete('restrict');
 
