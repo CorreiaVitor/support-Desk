@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\TicketStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -35,6 +36,7 @@ return new class extends Migration
                 ->onDelete('restrict');
 
             $table->foreignId('ticket_status_id')
+                ->default(TicketStatus::Aberto->value)
                 ->constrained()
                 ->onDelete('restrict');
 
