@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ticket_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->isNotEmpty();
+            $table->string('name', 255)->unique();
             $table->text('description')->nullable();
             $table->unsignedTinyInteger('sort_order');
             $table->boolean('is_final')->default(false);
