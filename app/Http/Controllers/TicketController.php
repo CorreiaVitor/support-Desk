@@ -6,8 +6,8 @@ use App\Http\Requests\StoreTicketRequest;
 use App\Models\Category;
 use App\Models\Priority;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use App\Actions\Tickets\CreateTicket;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class TicketController extends Controller
@@ -23,7 +23,6 @@ class TicketController extends Controller
             'ticketStatus',
             'comments'
         ])
-            ->latest()
             ->get();
 
         return view('tickets.index', ['tickets' => $tickets]);
@@ -37,9 +36,12 @@ class TicketController extends Controller
         return view('tickets.create', compact('categories', 'priorities'));
     }
 
-    public function store(StoreTicketRequest $request)
-    {
-        return to_route('tickets.index');
+    public function store(StoreTicketRequest $request, CreateTicket $action): RedirectResponse
+    {     
+        $ticket = $action->handle($request->validated());
+
+        return to_route('tickets.show', $ticket)
+            ->with('success', 'Chamado aberto com sucesso.');
     }
 
     public function show(Ticket $ticket): View
