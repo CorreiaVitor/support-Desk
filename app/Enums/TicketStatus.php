@@ -2,12 +2,12 @@
 
 namespace App\Enums;
 
-enum TicketStatus: int
+enum TicketStatus: string
 {
-    case Aberto = 1;
-    case EmAndamento = 2;
-    case AguardandoUsuário = 3;
-    case Resolvido = 4;
-    case Cancelado = 5;
+    case Open = 'Aberto';
+    case InProgress  = 'Em andamento';
+    case WaitingUser  = 'Aguardando usuário';
+    case Resolved = 'Resolvido';
+    case Canceled  = 'Cancelado';
 
 }
