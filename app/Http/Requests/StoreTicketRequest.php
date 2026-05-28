@@ -34,9 +34,9 @@ class StoreTicketRequest extends FormRequest
     public function messages()
     {
         return [
-            'title' => 'O campo título é obrigatório',
-            'category_id' => 'O campo categoria é obrigatório',
-            'priority_id' => 'O campo prioridade é obrigatório',
+            'title.required' => 'O campo título é obrigatório',
+            'category_id.required' => 'O campo categoria é obrigatório',
+            'priority_id.required' => 'O campo prioridade é obrigatório',
         ];
     }
 }
