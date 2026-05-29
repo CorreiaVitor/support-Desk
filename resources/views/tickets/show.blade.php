@@ -104,27 +104,62 @@
 
                 <div class="card-body">
                     @forelse ($ticket->comments as $comment)
-                        <div class='border rounded p-3 mb-3 bg-light'>
+                        <div @class([
+                            'border rounded p-3 mb-3',
+                            'bg-light' => $comment->is_internal,
+                        ])>
                             <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
-                                <strong>{{ $comment->user->name }}</strong>
-                                <span class="text-muted small">
-                                    {{ $comment->created_at->format('d/m/Y H:i') }}
-                                </span>
+                                <div>
+                                    <strong>{{ $comment->user->name }}</strong>
+
+                                    <span class="text-muted small d-block">
+                                        {{ $comment->created_at->format('d/m/Y H:i') }}
+                                    </span>
+                                </div>
+
+                                <div class="d-flex align-items-start gap-2">
+                                    @if ($comment->is_internal)
+                                        <span class="badge text-bg-dark align-self-start">
+                                            Comentário interno
+                                        </span>
+                                    @else
+                                        <span class="badge text-bg-primary align-self-start">
+                                            Comentário público
+                                        </span>
+                                    @endif
+
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn btn-sm btn-light border-0 fw-bold px-2 py-0"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                            aria-label="Abrir ações do comentário"
+                                        >
+                                            ...
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    Editar comentário
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <button class="dropdown-item text-danger" type="button">
+                                                    Excluir comentário
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            <p class="mb-2">
+                            <p class="mb-0">
                                 {{ $comment->body }}
                             </p>
 
-                            @if ($comment->is_internal)
-                                <span class="badge text-bg-dark">
-                                    Comentário interno
-                                </span>
-                            @else
-                                <span class="badge text-bg-primary">
-                                    Comentário público
-                                </span>
-                            @endif
                         </div>
                     @empty
                         <p class="text-muted mb-0">
@@ -153,7 +188,8 @@
 
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comentário</label>
-                            <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Digite uma atualização sobre o chamado..."></textarea>
+                            <textarea id="comment" name="comment" class="form-control" rows="4"
+                                placeholder="Digite uma atualização sobre o chamado..."></textarea>
                         </div>
 
                         <div class="d-flex justify-content-end">
