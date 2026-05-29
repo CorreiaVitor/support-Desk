@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketCommentController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ Route::resource('/chamados', TicketController::class)
 ->parameters(['chamados' => 'ticket']);
 
 Route::get('/chamados/{ticket:number}', [TicketController::class, 'show'])->name('tickets.show');
+
+//Rota responsavel por salvar um comentário no banco 
+Route::post('chamado/{ticket:number}/comentarios', [TicketCommentController::class, 'store'])->name('comment');
 
 Route::view('/admin/users', 'admin.users.index')->name('admin.users.index');
 Route::view('/admin/users/create', 'admin.users.create')->name('admin.users.create');
