@@ -140,22 +140,24 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('comment', $ticket->number) }}" method="POST">
+                        @csrf
+                        @method('POST')
                         <div class="mb-3">
                             <label for="commentType" class="form-label">Tipo de comentário</label>
-                            <select id="commentType" class="form-select">
-                                <option selected>Comentário público</option>
-                                <option>Comentário interno</option>
+                            <select id="commentType" name="commentType" class="form-select">
+                                <option value="0" selected>Comentário público</option>
+                                <option value="1">Comentário interno</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label for="comment" class="form-label">Comentário</label>
-                            <textarea id="comment" class="form-control" rows="4" placeholder="Digite uma atualização sobre o chamado..."></textarea>
+                            <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Digite uma atualização sobre o chamado..."></textarea>
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                 Adicionar comentário
                             </button>
                         </div>
