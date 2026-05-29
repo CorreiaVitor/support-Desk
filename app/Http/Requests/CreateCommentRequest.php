@@ -24,7 +24,7 @@ class CreateCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'commentType' => ['required', 'int'],
+            'commentType' => ['required', 'boolean'],
             'comment' => ['required', 'string']
         ];
     }
