@@ -17,10 +17,14 @@ Route::resource('/chamados', TicketController::class)
 ->names('tickets')
 ->parameters(['chamados' => 'ticket']);
 
+
+
 Route::get('/chamados/{ticket:number}', [TicketController::class, 'show'])->name('tickets.show');
 
-//Rota responsavel por salvar um comentário no banco 
-Route::post('chamado/{ticket:number}/comentarios', [TicketCommentController::class, 'store'])->name('comment');
+//Rotas responsavel pelo CRUD de comentários no banco 
+Route::post('chamados/{ticket:number}/comentarios', [TicketCommentController::class, 'store'])->name('ticket.comment');
+Route::put('chamados/{ticket:number}comentarios/{ticketComment}', [TicketCommentController::class, 'update'])->name('ticket.comments.update');
+
 
 Route::view('/admin/users', 'admin.users.index')->name('admin.users.index');
 Route::view('/admin/users/create', 'admin.users.create')->name('admin.users.create');
