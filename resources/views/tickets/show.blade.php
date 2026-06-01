@@ -109,6 +109,12 @@
                             'bg-light' => $comment->is_internal,
                         ])>
                             <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
+
+                                @include('tickets.comments._edit-modal', [
+                                    'ticket' => $ticket,
+                                    'tiketComment' => $comment,
+                                ])
+
                                 <div>
                                     <strong>{{ $comment->user->name }}</strong>
 
@@ -129,37 +135,35 @@
                                     @endif
 
                                     <div class="dropdown">
-                                        <button
-                                            class="btn btn-sm btn-light border-0 fw-bold px-2 py-0"
-                                            type="button"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                            aria-label="Abrir ações do comentário"
-                                        >
+                                        <button class="btn btn-sm btn-light border-0 fw-bold px-2 py-0" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false"
+                                            aria-label="Abrir ações do comentário">
                                             ...
                                         </button>
 
                                         <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                                             <li>
-                                                <a class="dropdown-item" href="#">
+                                                <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#editCommentModal-{{ $comment->id }}">
                                                     Editar comentário
-                                                </a>
+                                                </button>
                                             </li>
 
                                             <li>
-                                                <button class="dropdown-item text-danger" type="button">
-                                                    Excluir comentário
-                                                </button>
+                                                <form method="post" action="">
+                                                    <button class="dropdown-item text-danger" type="button">
+                                                        Excluir comentário
+                                                    </button>
+                                                </form>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
-                            <p class="mb-0">
+                            <p class="mb-3">
                                 {{ $comment->body }}
                             </p>
-
                         </div>
                     @empty
                         <p class="text-muted mb-0">
@@ -175,7 +179,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('comment', $ticket->number) }}" method="POST">
+                    <form action="{{ route('ticket.comment', $ticket->number) }}" method="POST">
                         @csrf
                         @method('POST')
                         <div class="mb-3">
