@@ -26,4 +26,23 @@ class TicketCommentController extends Controller
 
         return to_route('tickets.show', $ticket->number)->with('success', 'Comentário feito com sucesso!');
     }
+
+    public function update(StoreTicketCommentRequest $request, Ticket $ticket, TicketComment $ticketComment)
+    {
+        //Estou buscando o id do usuário dessa forma, enquando não utilizo autenticação.
+        $user = User::where('email', 'maria.oliveira@supportdesk.test')->firstOrFail();
+
+        abort_unless($ticketComment->ticket_id === $ticket->id, 404);
+
+        $validated = $request->validated();
+
+        $ticketComment->update([
+            'ticket_id' => $ticket->id,
+            'user_id' => $user->id,
+            'body' => $validated['comment'],
+            'is_internal' => $validated['commentType'],
+        ]);
+
+        return to_route('tickets.show', $ticket->number)->with('success', 'Comentário alterado com sucesso!');
+    }
 }
