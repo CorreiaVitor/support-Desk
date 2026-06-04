@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicketCommentRequest;
+use App\Http\Requests\UpdateTicketCommentRequest;
 use App\Models\Ticket;
 use App\Models\TicketComment;
 use App\Models\User;
@@ -13,7 +14,7 @@ class TicketCommentController extends Controller
     public function store(Ticket $ticket, StoreTicketCommentRequest $request): RedirectResponse
     {
         //Estou buscando o id do usuário dessa forma, enquando não utilizo autenticação.
-        $user = User::where('email', 'maria.oliveira@supportdesk.test')->firstOrFail();
+        $user = User::where('email', 'ana.suporte@supportdesk.test')->firstOrFail();
 
         TicketComment::create(
             [
@@ -27,10 +28,14 @@ class TicketCommentController extends Controller
         return to_route('tickets.show', $ticket->number)->with('success', 'Comentário feito com sucesso!');
     }
 
-    public function update(StoreTicketCommentRequest $request, Ticket $ticket, TicketComment $ticketComment)
+    public function update(UpdateTicketCommentRequest $request, Ticket $ticket, TicketComment $ticketComment): RedirectResponse
     {
         //Estou buscando o id do usuário dessa forma, enquando não utilizo autenticação.
-        $user = User::where('email', 'maria.oliveira@supportdesk.test')->firstOrFail();
+        $user = User::where('email', 'ana.suporte@supportdesk.test')->firstOrFail();
+
+        if ($ticketComment->user_id !== $user->id) {
+            return back(302)->with('error', 'Você não pode editar esse comentário.');
+        }
 
         abort_unless($ticketComment->ticket_id === $ticket->id, 404);
 
@@ -44,5 +49,22 @@ class TicketCommentController extends Controller
         ]);
 
         return to_route('tickets.show', $ticket->number)->with('success', 'Comentário alterado com sucesso!');
+    }
+
+    public function destroy(Ticket $ticket, TicketComment $ticketComment) : RedirectResponse
+    {
+
+        //Estou buscando o id do usuário dessa forma, enquando não utilizo autenticação.
+        $user = User::where('email', 'ana.suporte@supportdesk.test')->firstOrFail();
+
+        if ($ticketComment->user_id !== $user->id) {
+            return back(302)->with('error', 'Você não pode excluir esse comentário.');
+        }
+
+        abort_unless($ticketComment->ticket_id === $ticket->id, 404);
+
+        $ticketComment->delete();
+
+        return to_route('tickets.show', $ticket->number)->with('success', 'Comentário excluido com sucesso!');
     }
 }
