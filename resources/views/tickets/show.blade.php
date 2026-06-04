@@ -150,8 +150,10 @@
                                             </li>
 
                                             <li>
-                                                <form method="post" action="">
-                                                    <button class="dropdown-item text-danger" type="button">
+                                                <form method="post" action="{{ route('ticket.comments.destroy', [$ticket->number, $comment->id]) }}" >
+                                                    @csrf
+                                                    @method('DELETE');
+                                                    <button class="dropdown-item text-danger" type="submit" onclick="return confirm('Tem certza que você quer excluir esse comentário?')">
                                                         Excluir comentário
                                                     </button>
                                                 </form>
