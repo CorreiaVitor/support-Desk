@@ -23,7 +23,8 @@ Route::get('/chamados/{ticket:number}', [TicketController::class, 'show'])->name
 
 //Rotas responsavel pelo CRUD de comentários no banco 
 Route::post('chamados/{ticket:number}/comentarios', [TicketCommentController::class, 'store'])->name('ticket.comment');
-Route::put('chamados/{ticket:number}comentarios/{ticketComment}', [TicketCommentController::class, 'update'])->name('ticket.comments.update');
+Route::put('chamados/{ticket:number}/comentarios/{ticketComment}', [TicketCommentController::class, 'update'])->name('ticket.comments.update');
+Route::delete('chamados/{ticket:number}/comentarios/{ticketComment}', [TicketCommentController::class, 'destroy'])->name('ticket.comments.destroy');
 
 
 Route::view('/admin/users', 'admin.users.index')->name('admin.users.index');
