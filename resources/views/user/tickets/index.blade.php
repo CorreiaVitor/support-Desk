@@ -142,7 +142,7 @@
                             <td>Ana Suporte</td>
                             <td>01/05/2026</td>
                             <td class="text-end">
-                                <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
                                     Ver
                                 </a>
                             </td>
@@ -165,7 +165,7 @@
                             <td>Não atribuído</td>
                             <td>01/05/2026</td>
                             <td class="text-end">
-                                <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
                                     Ver
                                 </a>
                             </td>
@@ -188,7 +188,7 @@
                             <td>Ana Suporte</td>
                             <td>30/04/2026</td>
                             <td class="text-end">
-                                <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
                                     Ver
                                 </a>
                             </td>
@@ -211,7 +211,7 @@
                             <td>Não atribuído</td>
                             <td>02/05/2026</td>
                             <td class="text-end">
-                                <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
                                     Ver
                                 </a>
                             </td>
@@ -234,7 +234,7 @@
                             <td>Carlos Técnico</td>
                             <td>28/04/2026</td>
                             <td class="text-end">
-                                <a href="{{ route('tickets.show') }}" class="btn btn-outline-primary btn-sm">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
                                     Ver
                                 </a>
                             </td>

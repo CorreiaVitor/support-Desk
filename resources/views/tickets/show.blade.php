@@ -150,10 +150,12 @@
                                             </li>
 
                                             <li>
-                                                <form method="post" action="{{ route('ticket.comments.destroy', [$ticket->number, $comment->id]) }}" >
+                                                <form method="post"
+                                                    action="{{ route('ticket.comments.destroy', [$ticket->number, $comment->id]) }}">
                                                     @csrf
                                                     @method('DELETE');
-                                                    <button class="dropdown-item text-danger" type="submit" onclick="return confirm('Tem certza que você quer excluir esse comentário?')">
+                                                    <button class="dropdown-item text-danger" type="submit"
+                                                        onclick="return confirm('Tem certza que você quer excluir esse comentário?')">
                                                         Excluir comentário
                                                     </button>
                                                 </form>
@@ -217,36 +219,39 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <select id="status" class="form-select">
-                                <option selected>{{ $ticket->ticketStatus->name }}</option>
-                                <option>Aberto</option>
-                                <option>Em andamento</option>
-                                <option>Aguardando usuário</option>
-                                <option>Resolvido</option>
-                                <option>Cancelado</option>
+                            <label for="ticket_status_id" class="form-label">Status</label>
+                            <select id="ticket_status_id" name="ticket_status_id" class="form-select">
+                                @foreach ($ticketStatuses as $ticketStatus)
+                                    <option value="{{ $ticketStatus->id }}" @selected($ticket->ticket_status_id === $ticketStatus->id)>
+                                        {{ $ticketStatus->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="technician" class="form-label">Técnico responsável</label>
-                            <select id="technician" class="form-select">
-                                <option selected>{{ $ticket->technician?->name ?? 'Não atribuído' }}</option>
-                                <option>Carlos Técnico</option>
-                                <option>Ana Suporte</option>
-                                <option>Marcos Técnico</option>
-                                <option>Fernanda Suporte</option>
+                            <label for="technician_id" class="form-label">Técnico responsável</label>
+                            <select id="technician_id" name="technician_id" class="form-select">
+                                <option value="" @selected(is_null($ticket->technician_id))>
+                                    Não atribuído
+                                </option>
+
+                                @foreach ($technicians as $technician)
+                                    <option value="{{ $technician->id }}" @selected($ticket->technician_id === $technician->id)>
+                                        {{ $technician->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="priority" class="form-label">Prioridade</label>
-                            <select id="priority" class="form-select">
-                                <option selected>{{ $ticket->priority->name }}</option>
-                                <option>Baixa</option>
-                                <option>Média</option>
-                                <option>Alta</option>
-                                <option>Crítica</option>
+                            <label for="priority_id" class="form-label">Prioridade</label>
+                            <select id="priority_id" name="priority_id" class="form-select">
+                                @foreach ($priorities as $priority)
+                                    <option value="{{ $priority->id }}"@selected($ticket->priority_id === $priority->id)>
+                                        {{ $priority->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
